@@ -25,10 +25,14 @@ export default class Naics extends LightningElement {
     }
 
     async fetchNaics(input) {
-        const response = await (await fetch(`https://www.census.gov/naics/resources/model/dataHandler.php?input=${input}&search=2022`)).json()
-
-        for (const [key, value] of Object.entries(response.result)) {
-            this.data = [...this.data, value]
+        try {
+            const response = await (await fetch(`https://www.census.gov/naics/resources/model/dataHandler.php?input=${input}&search=2022`)).json()
+    
+            for (const [key, value] of Object.entries(response.result)) {
+                this.data = [...this.data, value]
+            }
+        } catch (error) {
+            console.error(error)
         }
     }
 

@@ -1,6 +1,6 @@
 <template>
     
-    <div class="slds-box">
+    <div class="slds-box" style="background-color:white;">
         <lightning-input
             name="search"
             label="Search for Business Type"
@@ -9,6 +9,9 @@
         ></lightning-input>
 
         <template lwc:if={data.length}>
+
+            <br />
+
             <div style="height:200px">
                 <lightning-datatable
                     columns={columns}
