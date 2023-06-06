@@ -1,0 +1,25 @@
+<template>
+    
+    <div class="slds-box">
+        <lightning-input
+            name="search"
+            label="Search for Business Type"
+            type="search"
+            onchange={handleSearchChange}
+        ></lightning-input>
+
+        <template lwc:if={data.length}>
+            <div style="height:200px">
+                <lightning-datatable
+                    columns={columns}
+                    data={data}
+                    key-field="Id"
+                    enable-infinite-loading
+                    onloadmore={loadMoreData}
+                    hide-checkbox-column
+                ></lightning-datatable>
+            </div>
+        </template>
+    </div>
+
+</template>
