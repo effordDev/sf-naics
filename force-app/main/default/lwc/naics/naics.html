@@ -13,14 +13,15 @@
             <br />
 
             <div style="height:200px">
+                <!-- sldsValidatorIgnoreNextLine -->
                 <lightning-datatable
                     columns={columns}
                     data={data}
                     key-field="Id"
-                    enable-infinite-loading
-                    onloadmore={loadMoreData}
                     hide-checkbox-column
-                ></lightning-datatable>
+                    ></lightning-datatable>
+                    <!-- enable-infinite-loading
+                    onloadmore={loadMoreData} -->
             </div>
         </template>
     </div>
