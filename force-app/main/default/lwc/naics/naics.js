@@ -39,8 +39,16 @@ export default class Naics extends LightningElement {
 
                 const json = await response.json()
 
+                console.log(json)
+
                 for (const [key, value] of Object.entries(json?.result)) {
-                    this.data = [...this.data, value]
+
+                    const item = {
+                        code: value?.code || value?.naics22,
+                        title: value?.title || value?.index_desc
+                    }
+
+                    this.data = [...this.data, item]
                 }
             } else {
                 console.error(response)
