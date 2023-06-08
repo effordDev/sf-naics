@@ -19,7 +19,8 @@
                     data={data}
                     key-field="Id"
                     hide-checkbox-column
-                    ></lightning-datatable>
+                    onrowaction={handleRowAction}
+                ></lightning-datatable>
                     <!-- enable-infinite-loading
                     onloadmore={loadMoreData} -->
             </div>

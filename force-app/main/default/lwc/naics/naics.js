@@ -1,5 +1,5 @@
 import { LightningElement } from 'lwc';
-import { cols } from './utilities'
+import { cols, copyTextToClipboard } from './utilities'
 export default class Naics extends LightningElement {
  
     timeoutId
@@ -39,7 +39,7 @@ export default class Naics extends LightningElement {
 
                 const json = await response.json()
 
-                console.log(json)
+                // console.log(json)
 
                 for (const [key, value] of Object.entries(json?.result)) {
 
@@ -58,21 +58,12 @@ export default class Naics extends LightningElement {
         }
     }
 
-    // loadMoreData(event) {
- 
-    //     event.target.isLoading = true;
-        
-    //     if (this.data.length >= this.totalNumberOfRows) {
-    //         event.target.enableInfiniteLoading = false;
-            
-    //     } else {
-    //         const currentData = this.data;
-            
-    //         const newData = currentData.concat(data);
-    //         this.data = newData;
-    //         this.loadMoreStatus = '';
-    //     }
-        
-    //     event.target.isLoading = false;
-    // }
+    handleRowAction(event) {
+
+        const action = event.detail.action.name
+
+        if (action === 'copy') {
+            copyTextToClipboard(event.detail.row.code)
+        }
+    }
 }
